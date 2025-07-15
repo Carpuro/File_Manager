@@ -1,4 +1,104 @@
-": "pdf"
+# Folder Paths
+
+source_path = r'C:\Example\Source\Folder'
+output_path = r'C:\Example\Outputh\Folder'
+dest_path   = r'C:\Example\Destination\Folder'
+
+# Folder Category
+# This is the dictionary that contains the folder categories and their respective keywords, extensions, and other attributes.
+# The keys are the folder names, and the values are dictionaries that contain the keywords, extensions, and other attributes for each folder.
+# The keywords are used to identify the files that belong to that folder, and the extensions are used to filter the files based on their file type.
+
+folder_categories = {
+    "Contract Amendments": { # This is the folder for Contract Amendments and related documents.
+        "Contract Amendment": {
+            "keywords": ["amend", "amendment", "amending", "amd", "modification","mod", "addendum"],
+            "extension": "pdf",
+            "file_category_extraction": ["AMENDMENT TO AGREEMENT"],
+            "trailing_number_extraction" : ["Amendment No.: "],
+            "date_extraction": ["Effective Date of Amendment: ", "The effective date of this Amendment is "]
+        }
+    },
+    "Base Service Agreement": { # This is the folder for Base Service Agreements and related documents.
+        "BSA": { # This is the file configuration for Base Service Agreements (BSA) and related documents.
+            "keywords": ["bsa","pfa","jcdpa","base services", "base agreement", "base services agreement","base service agreement",
+                        "base services and consulting agreement", "base services agreement and consulting agreement",
+                        "professional services agreement", "base services and consulting agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["Base Services and Consulting Agreement", "“Limited Use” Base Service", 
+                                        "Limited Use Base Services Agreement","Professional Services Agreement",
+                                        "JOINT CONTROLLER DATA PROCESSING AGREEMENT"],
+            "date_extraction": ["This Base Services and Consulting Addgreement (\"Agreement\") is made and entered into on "]
+        },       
+        "MSA": { # This is the file configuration for Master Service Agreements (MSA) and related documents.
+            "keywords": ["msa","mslsa","mssa","msps", "master", "master service agreement", "master services agreement", "master consolidated services agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["MASTER SERVICES AGREEMENT","MASTER STANDARD SERVICES AGREEMENT", 
+                                        "MASTER CONSOLIDATED SERVICES AGREEMENT","MASTER SUBSCRIPTION SERVICES AGREEMENT"
+                                        "MASTER SUBSCRIPTION LICENCE AND SERVICES AGREEMENT"],
+            "date_extraction": ["This Master Services Agreement (\"Agreement\") is made and entered into on "]
+        },
+        "SSA": { # This is the file configuration for Standard Service Agreements (SSA) and related documents.
+            "keywords": ["ssa", "standard service agreement", "standard agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["STANDARD SERVICES AGREEMENT"],
+            "date_extraction": ["This Standard Services Agreement (\"Agreement\") is made and entered into on "]
+        },
+        "POTAC": { # This is the file configuration for Purchase Order Terms and Conditions (POTAC) and related documents.  
+            "keywords": ["potac", "purchase order terms and conditions", "purchase order terms", "purchase order agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["PURCHASE ORDER TERMS AND CONDITIONS", "PURCHASE ORDER AGREEMENT"],
+            "date_extraction" :["This Standalone (this “Standalone”) is made and entered into on "]
+        }, 
+        "LIA": { # This is the file configuration for Local Implementation Agreements (LIA) and related documents.
+            "keywords": ["LIA", "limited", "local","lia", "implementation", "local implementation agreement"],
+            "extension": "pdf",
+            "country_extraction": ["LOCAL IMPLEMENTATION AGREEMENT – ", "LOCAL IMPLEMENTATION AGREEMENT"],
+            "file_category_extraction": ["LOCAL IMPLEMENTATION AGREEMENT"],
+            "date_extraction" :["The term of this LIA shall commence on "]
+        },  
+        "SaaS": { # This is the file configuration for Software as a Service (SaaS) agreements and related documents.
+            "keywords": ["saas", "software as a service", "software as a service agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["SOFTWARE AS A SERVICE AGREEMENT"],
+            "date_extraction" :["This Software as a Service Agreement (\"Agreement\") is made and entered into on "]
+        },
+        "SLA": { # This is the file configuration for Software License Agreements (SLA) and related documents.
+            "keywords": ["isla","sla", "internal software license agreement", "internal software","software license agreement"],
+            "extension": "pdf",
+            "file_category_extraction": ["INTERNAL SOFTWARE LICENSE AGREEMENT","SOFTWARE LICENSE AGREEMENT"],
+            "date_extraction": ["Software License Agreement (\"Agreement\") is made and entered into on "]
+        },
+        "MCA": { # This is the file configuration for Master Consulting Agreements (MCA) and related documents.
+            "keywords": ["mca","master consulting"],
+            "extension": "pdf",
+            "file_category_extraction": ["MASTER CONSULTING AGREEMENT"],
+            "date_extraction": ["This Software License Agreement (\"Agreement\") is made and entered into on "]
+        },
+        "GBA": { # This is the file configuration for Global Procurement Agreements (GBA) and related documents.
+            "keywords": ["gba","global procurement agreement", "global procurement"],
+            "extension": "pdf",
+            "file_category_extraction": ["GLOBAL PROCUREMENT AGREEMENT","GLOBAL PROCUREMENT MASTER TERMS AGREEMENT"],
+            "date_extraction": ["This Global Procurement Agreement (\"Agreement\") is made and entered into on "]
+        }            
+    },
+    "Contract Summary": {
+        "CSS": { # This is the file configuration for Contract Summary Sheets and related documents.
+            "keywords": ["contract summary", "contract_summary", "exec summary", "executive", 
+                        "overview", "snapshot", "css","agreement summary" "contract summary sheet", "brief", "synopsis"],
+            "extension": "pdf"
+        }
+    },
+    "Supporting Documents": {
+        "Extension Letter": { # This is the file configuration for Extension Letters and related documents.
+            "keywords": ["extension", "continuation", "renew", "renewal"],
+            "extension": "pdf",
+            "file_category_extraction": ["This letter serves as written notice of our election to renew"],
+            "date_extraction" :["through"]
+        },
+        "Risk Memo": { # This is the file configuration for Risk Memos and related documents.
+            "keywords": ["risk", "risk memo"], 
+            "extension": "pdf"
         },
         "Payment Approval": { # This is the file configuration for Payment Approval documents and related files.
             "keywords": ["payment", "approval"],
@@ -198,6 +298,8 @@ countries = {
     "Zambia": {"ZM", "ZMB", "Zambia"},
     "Zimbabwe": {"ZW", "ZWE", "Zimbabwe"},
 }
+
+
 
 
 
